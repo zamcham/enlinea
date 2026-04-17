@@ -4,57 +4,70 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Chat en línea gratis - Enlinea.chat</title>
+  <title>Chat en línea gratis | Chatear con personas y hacer amigos</title>
 
-  <meta name="description" content="Chat en línea gratis para chatear con personas, hacer amigos y conocer gente nueva fácilmente." />
+  <meta name="description" content="Chat en línea gratis para chatear con personas, hacer amigos y conocer gente nueva. Entra ahora y conversa en tiempo real." />
   <meta name="keywords" content="chat en linea, chat gratis, chatear con personas, chat amigos, hacer amigos online, conocer gente, chat latino, chat hispano" />
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0ea5e9, #2563eb, #1e3a8a);
+      color: white;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
-      padding: 20px;
       text-align: center;
-      background: #111827;
+      padding: 28px 16px 10px;
     }
 
     h1 {
       margin: 0;
-      font-size: 24px;
-    }
-
-    p {
-      max-width: 700px;
-      margin: 10px auto;
-      font-size: 14px;
-      color: #cbd5e1;
+      font-size: 28px;
     }
 
     .container {
-      padding: 20px;
-      display: flex;
-      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      text-align: center;
     }
 
-    .chat-box {
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+      margin: 10px 0;
+    }
+
+    .chat-wrapper {
+      width: 740px;
+      height: 498px;
+      margin: 20px auto;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    iframe {
       width: 100%;
-      max-width: 900px;
-      height: 600px;
+      height: 498px;
       border: none;
-      border-radius: 8px;
-      overflow: hidden;
+      border-radius: 10px;
+      background: white;
     }
 
     footer {
       text-align: center;
       font-size: 12px;
-      padding: 20px;
-      color: #64748b;
+      padding: 16px;
+      color: rgba(255,255,255,0.7);
     }
   </style>
 </head>
@@ -63,15 +76,33 @@
 
 <header>
   <h1>Chat en línea gratis</h1>
-  <p>Chatea con personas, haz amigos y conoce gente nueva en tiempo real.</p>
 </header>
 
 <div class="container">
-<iframe src="https://xat.com/embed/chat.php#id=40788749&gn=EnLinea" allow="clipboard-write" width="730" height="490" frameborder="0" scrolling="no"></iframe>
+
+  <p>
+    Bienvenido a nuestro <b>chat en línea</b> gratuito, un espacio para
+    <b>chatear con personas</b> y conocer gente nueva en tiempo real.
+  </p>
+
+  <p>
+    Aquí puedes <b>hacer amigos</b>, hablar con personas de diferentes lugares y disfrutar de una comunidad activa de chat.
+  </p>
+
+  <p>
+    Si buscas un <b>chat para conocer gente</b> o simplemente conversar, entra y empieza a chatear ahora mismo.
+  </p>
+
+</div>
+
+<div class="chat-wrapper">
+  <iframe src="https://xat.com/embed/chat.php#id=40788749&gn=EnLinea"
+    allow="clipboard-write">
+  </iframe>
 </div>
 
 <footer>
-  © Enlinea.chat - Chat social en línea
+  © Enlinea.chat - Chat en línea para conocer gente y hacer amigos
 </footer>
 
 </body>
