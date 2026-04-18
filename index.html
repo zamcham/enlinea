@@ -4,167 +4,580 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Chat en línea gratis | Chatear con personas y hacer amigos</title>
+  <title>Chat en Línea Gratis | enlinea.chat</title>
 
-  <meta name="description" content="Chat en línea gratis para chatear con personas, hacer amigos y conocer gente nueva. Entra ahora y conversa en tiempo real." />
-  <meta name="keywords" content="chat en linea, chatear con personas, chat amigos, chat para hacer amigos, chat para conocer gente, chat gratis, conocer gente online" />
+  <meta name="description" content="Entra al chat en línea gratis y habla con personas reales ahora mismo. Sin registro, sin descargas. El punto de encuentro para conocer gente, hacer amigos y chatear." />
+  <meta name="keywords" content="chat en linea, chat online gratis, chatear con personas, chat para conocer gente, chat para hacer amigos" />
 
-  <!-- Canonical -->
   <link rel="canonical" href="https://enlinea.chat/" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Chat en línea gratis | Conocer gente y hacer amigos" />
-  <meta property="og:description" content="Chatea con personas en tiempo real, haz amigos y conoce gente nueva gratis." />
+  <meta property="og:title" content="Chat en Línea Gratis | enlinea.chat" />
+  <meta property="og:description" content="Habla con personas reales ahora mismo. Sin registro, sin descargas, gratis." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://enlinea.chat/" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "enlinea.chat",
+    "url": "https://enlinea.chat",
+    "description": "Chat en línea gratis para conocer gente, hacer amigos y chatear con personas reales sin registro.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://enlinea.chat/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #0ea5e9, #2563eb, #1e3a8a);
-      color: white;
-      display: flex;
-      flex-direction: column;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --surface: rgba(255,255,255,0.10);
+      --border:  rgba(255,255,255,0.18);
+      --accent:  #93c5fd;
+      --accent2: #bfdbfe;
+      --text:    #ffffff;
+      --muted:   rgba(255,255,255,0.70);
     }
 
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(155deg, #3b82f6 0%, #2563eb 35%, #1d4ed8 65%, #1e3a8a 100%);
+      min-height: 100vh;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 45% at 95% 5%,  rgba(255,255,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 35% at 5%  95%, rgba(255,255,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
     header {
+      position: relative; z-index: 1;
       text-align: center;
-      padding: 28px 16px 10px;
+      padding: 44px 20px 28px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 8px; height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.7); }
     }
 
     h1 {
-      margin: 0;
-      font-size: 28px;
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 28px rgba(0,0,0,0.15);
     }
 
-    .container {
+    .tagline {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 6px;
+      line-height: 1.55;
+    }
+
+    /* ── PILLS ── */
+    .pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: var(--accent2);
+      font-weight: 500;
+    }
+
+    /* ── CHAT SECTION ── */
+    .chat-section {
+      position: relative; z-index: 1;
       max-width: 900px;
       margin: 0 auto;
-      padding: 10px 16px;
+      padding: 0 24px 32px;
+    }
+
+    .chat-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
       text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .chat-wrapper {
+      width: 100%;
+      height: 520px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 12px 56px rgba(0,0,0,0.25);
+    }
+
+    iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+
+    .chat-note {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      position: relative; z-index: 1;
+      max-width: 900px;
+      margin: 8px auto 0;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .divider-text {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.6;
+      white-space: nowrap;
+    }
+
+    /* ── LINKS GRID ── */
+    .links-section {
+      position: relative; z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 24px 0;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .link-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      text-decoration: none;
+      color: var(--text);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .link-card:hover {
+      border-color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    .link-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .link-icon { font-size: 22px; }
+
+    .link-arrow {
+      font-size: 16px;
+      color: var(--muted);
+      opacity: 0.5;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .link-card:hover .link-arrow {
+      opacity: 1;
+      transform: translateX(3px);
+    }
+
+    .link-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .link-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .link-tag {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 11px;
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      color: var(--accent2);
+      opacity: 0.75;
+    }
+
+    /* ── BOTTOM CONTENT ── */
+    .bottom {
+      position: relative; z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      opacity: 0.75;
+      margin-bottom: -4px;
+    }
+
+    /* ── WHY CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .card-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 14px;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.9);
-      margin: 10px 0;
+      line-height: 1.7;
+      color: var(--muted);
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0 20px;
+    /* ── TRAITS ── */
+    .traits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
     }
 
-    li {
-      font-size: 14px;
-      margin: 6px 0;
-      color: rgba(255,255,255,0.9);
-    }
-
-    .chat-wrapper {
-      width: 740px;
-      height: 498px;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
-      padding: 12px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    .trait {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 10px;
-      background: white;
-    }
-
-    footer {
+      padding: 14px;
       text-align: center;
-      font-size: 12px;
-      padding: 16px;
-      color: rgba(255,255,255,0.7);
     }
 
-    /* Mobile responsiveness only */
-    @media (max-width: 768px) {
-      .chat-wrapper {
-        width: 95%;
-        height: 400px;
-      }
+    .trait-icon { font-size: 22px; margin-bottom: 6px; }
 
-      h1 {
-        font-size: 22px;
-      }
+    .trait-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+
+    .trait p { font-size: 11px; margin: 0; }
+
+    /* ── SEO ── */
+    .seo-section h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .seo-section h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin: 14px 0 5px;
+    }
+
+    .seo-section a { color: var(--accent2); text-decoration: none; }
+    .seo-section a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: #fff; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+      .links-grid  { grid-template-columns: 1fr 1fr; }
+      .traits      { grid-template-columns: 1fr 1fr; }
+      .chat-wrapper { height: 420px; }
+    }
+
+    @media (max-width: 420px) {
+      .links-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-  <h1>Chat en línea gratis</h1>
+  <div class="live-badge">
+    <div class="dot"></div>
+    Chat activo ahora
+  </div>
+  <h1>Tu Chat en Línea,<br/>Gratis y Sin Registro</h1>
+  <p class="tagline">El punto de encuentro para conversar, conocer gente y hacer amigos. Entra con un apodo y ya estás dentro.</p>
+  <div class="pills">
+    <span class="pill">✓ Sin registro</span>
+    <span class="pill">✓ 100% gratis</span>
+    <span class="pill">✓ Personas reales</span>
+    <span class="pill">✓ Activo las 24h</span>
+  </div>
 </header>
 
-<div class="container">
+<!-- CHAT -->
+<div class="chat-section">
+  <div class="chat-label">Sala principal — en directo</div>
+  <div class="chat-wrapper">
+    <iframe
+      src="https://xat.com/embed/chat.php#id=40788749&gn=EnLinea"
+      allow="clipboard-write"
+      title="Chat en línea gratis sin registro">
+    </iframe>
+  </div>
+  <p class="chat-note">🟢 Chat en vivo · Sin registro · Gratis siempre</p>
+</div>
 
-  <p>
-    Bienvenido a nuestro <b>chat en línea</b> gratuito para chatear con personas y conocer gente nueva en tiempo real.
-  </p>
+<!-- DIVIDER -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-text">Más opciones</div>
+  <div class="divider-line"></div>
+</div>
 
-  <p>
-    Un espacio para hacer amigos, conversar y conectarte con personas de todo el mundo.
-  </p>
+<!-- LINKS GRID -->
+<div class="links-section">
+  <div class="links-grid">
 
-  <section>
-    <h2>¿Qué puedes hacer aquí?</h2>
-    <ul>
-      <li>Chatear con personas en línea</li>
-      <li>Hacer amigos nuevos</li>
-      <li>Conocer gente de diferentes países</li>
-    </ul>
-  </section>
+    <a href="/chat-en-linea" class="link-card">
+      <div class="link-card-top">
+        <div class="link-icon">💬</div>
+        <div class="link-arrow">→</div>
+      </div>
+      <div class="link-title">Chat en Línea</div>
+      <div class="link-desc">El chat principal. Entra y empieza a hablar con quien esté conectado ahora.</div>
+      <span class="link-tag">chat en línea</span>
+    </a>
+
+    <a href="/chatear-con-personas" class="link-card">
+      <div class="link-card-top">
+        <div class="link-icon">⚡</div>
+        <div class="link-arrow">→</div>
+      </div>
+      <div class="link-title">Chatear con Personas</div>
+      <div class="link-desc">Conversación inmediata con personas reales. Sin bots, sin esperas, sin filtros.</div>
+      <span class="link-tag">chatear con personas</span>
+    </a>
+
+    <a href="/chat-amigos" class="link-card">
+      <div class="link-card-top">
+        <div class="link-icon">🏠</div>
+        <div class="link-arrow">→</div>
+      </div>
+      <div class="link-title">Chat de Amigos</div>
+      <div class="link-desc">Una sala con ambiente. Gente que vuelve, conversaciones que continúan.</div>
+      <span class="link-tag">chat de amigos</span>
+    </a>
+
+    <a href="/chat-para-conocer-gente" class="link-card">
+      <div class="link-card-top">
+        <div class="link-icon">🌍</div>
+        <div class="link-arrow">→</div>
+      </div>
+      <div class="link-title">Conocer Gente Nueva</div>
+      <div class="link-desc">Para quienes buscan nuevas conexiones sin la presión de las redes sociales.</div>
+      <span class="link-tag">chat para conocer gente</span>
+    </a>
+
+    <a href="/chat-para-hacer-amigos" class="link-card">
+      <div class="link-card-top">
+        <div class="link-icon">💙</div>
+        <div class="link-arrow">→</div>
+      </div>
+      <div class="link-title">Hacer Amigos</div>
+      <div class="link-desc">Donde las conversaciones se convierten en amistades de verdad.</div>
+      <span class="link-tag">chat para hacer amigos</span>
+    </a>
+
+    <!-- Placeholder for future page -->
+    <div class="link-card" style="opacity:0.45; cursor:default; pointer-events:none;">
+      <div class="link-card-top">
+        <div class="link-icon">✨</div>
+      </div>
+      <div class="link-title">Más salas</div>
+      <div class="link-desc">Próximamente más espacios para conectar con personas afines.</div>
+      <span class="link-tag">próximamente</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- BOTTOM CONTENT -->
+<div class="bottom">
+
+  <div class="traits">
+    <div class="trait">
+      <div class="trait-icon">⚡</div>
+      <div class="trait-title">Instantáneo</div>
+      <p>Entras y hay gente. Sin esperas ni configuración.</p>
+    </div>
+    <div class="trait">
+      <div class="trait-icon">🔒</div>
+      <div class="trait-title">Privado</div>
+      <p>Solo necesitas un apodo. Nada más.</p>
+    </div>
+    <div class="trait">
+      <div class="trait-icon">🌍</div>
+      <div class="trait-title">Global</div>
+      <p>Personas de toda la comunidad hispanohablante.</p>
+    </div>
+    <div class="trait">
+      <div class="trait-icon">🕐</div>
+      <div class="trait-title">24 horas</div>
+      <p>Activo de día, de noche y de madrugada.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Sobre enlinea.chat</p>
+  <div class="card seo-section">
+    <h2>El chat en línea más simple que vas a encontrar</h2>
+    <p>
+      <strong>enlinea.chat</strong> nació con una idea simple: que chatear con personas reales no debería requerir registro, verificación, perfil ni ningún tipo de fricción. Llegas, pones un apodo y estás dentro. Así de fácil ha sido siempre, y así seguirá siendo.
+    </p>
+
+    <h3>Un chat para cada momento y cada intención</h3>
+    <p>
+      No todo el mundo busca lo mismo cuando entra a un <strong>chat en línea</strong>. Algunos quieren <a href="/chatear-con-personas">chatear con personas</a> sin más objetivo. Otros buscan <a href="/chat-para-conocer-gente">conocer gente nueva</a> o incluso <a href="/chat-para-hacer-amigos">hacer amigos de verdad</a>. Por eso tenemos diferentes espacios pensados para cada intención, todos en el mismo sitio.
+    </p>
+
+    <h3>¿Por qué seguir usando chats en línea en 2025?</h3>
+    <p>
+      Las redes sociales se han convertido en algo complicado: perfiles, algoritmos, métricas, audiencias. Un <strong>chat en línea</strong> recupera lo que internet siempre debió ser — un espacio para hablar con personas reales sin todo ese ruido. Sin imagen que gestionar, sin historial visible, sin likes. Solo la conversación.
+    </p>
+
+    <h3>Gratis ahora y siempre</h3>
+    <p>
+      No hay planes de pago, no hay funciones premium, no hay créditos. El <a href="/chat-amigos">chat de amigos</a> y todos los espacios de enlinea.chat son completamente gratuitos. El acceso libre a la conversación no es una estrategia de marketing: es el principio que define este sitio.
+    </p>
+  </div>
 
 </div>
 
-<div class="chat-wrapper">
-  <iframe src="https://xat.com/embed/chat.php#id=40788749&gn=EnLinea"
-    allow="clipboard-write">
-  </iframe>
-</div>
-
-<div class="container">
-
-  <section>
-    <h2>Preguntas frecuentes</h2>
-
-    <p><b>¿Es gratis?</b><br/>Sí, el chat es completamente gratis.</p>
-
-    <p><b>¿Necesito registrarme?</b><br/>No, puedes entrar directamente.</p>
-
-    <p><b>¿Puedo hablar con personas de otros países?</b><br/>Sí, es un chat global.</p>
-  </section>
-
-</div>
-
+<!-- FOOTER -->
 <footer>
-  © enlinea.chat - Chat en línea para conocer gente y hacer amigos
+  <p style="margin-bottom:10px;">
+    <a href="/chat-en-linea">Chat en línea</a>
+    <a href="/chatear-con-personas">Chatear con personas</a>
+    <a href="/chat-amigos">Chat de amigos</a>
+    <a href="/chat-para-conocer-gente">Conocer gente</a>
+    <a href="/chat-para-hacer-amigos">Hacer amigos</a>
+  </p>
+  © enlinea.chat — Chat en línea gratis, sin registro, siempre activo
 </footer>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C39VLW68DT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-C39VLW68DT');
-</script>
+<script src="/assets/analytics.js"></script>
 
 </body>
 </html>

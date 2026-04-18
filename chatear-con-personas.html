@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Chatear con Personas Reales | Sin Registro, Ahora Mismo</title>
+
+  <meta name="description" content="Chatear con personas reales nunca fue tan fácil. Entra, escribe y empieza a conversar al instante. Sin cuenta, sin esperas, completamente gratis." />
+  <meta name="keywords" content="chatear con personas, chatear con personas reales, chat con personas, hablar con personas online, chatear ahora" />
+
+  <link rel="canonical" href="https://enlinea.chat/chatear-con-personas" />
+  <meta property="og:title" content="Chatear con Personas Reales | Sin Registro, Ahora Mismo" />
+  <meta property="og:description" content="Entra y empieza a chatear con personas reales al instante. Sin registro, gratis." />
+  <meta property="og:url" content="https://enlinea.chat/chatear-con-personas" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo puedo chatear con personas reales ahora mismo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entra directamente al chat de esta página, escribe un apodo y empieza a escribir. No necesitas crear ninguna cuenta. En segundos estás hablando con personas reales."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Las personas del chat son reales o bots?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Son personas reales. No hay bots ni respuestas automatizadas. Cada mensaje que ves lo escribe alguien de carne y hueso conectado en ese momento."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo chatear con personas de otros países?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. El chat está abierto a personas de cualquier país. Encontrarás gente de España, México, Argentina, Colombia y muchos otros lugares."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito instalar algo para chatear?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. El chat funciona directamente en el navegador, en móvil o en ordenador. Sin apps, sin descargas, sin configuración."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --surface: rgba(255,255,255,0.10);
+      --border:  rgba(255,255,255,0.18);
+      --accent:  #93c5fd;
+      --accent2: #bfdbfe;
+      --text:    #ffffff;
+      --muted:   rgba(255,255,255,0.70);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(155deg, #3b82f6 0%, #2563eb 35%, #1d4ed8 65%, #1e3a8a 100%);
+      min-height: 100vh;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 45% at 95% 5%,  rgba(255,255,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 35% at 5%  95%, rgba(255,255,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      position: relative; z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 24px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: #fff; }
+    .breadcrumb span { margin: 0 6px; opacity: 0.35; }
+
+    /* ── HEADER ── */
+    header {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 28px 20px 18px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 8px; height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.7); }
+    }
+
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.15);
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* ── TOP ROW ── */
+    .top-row {
+      position: relative; z-index: 1;
+      display: flex;
+      gap: 22px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 22px;
+      align-items: flex-start;
+    }
+
+    .col-chat { flex: 1.55; min-width: 0; }
+
+    .chat-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 7px;
+    }
+
+    .chat-wrapper {
+      width: 100%;
+      height: 510px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 10px 48px rgba(0,0,0,0.22);
+    }
+
+    iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+
+    .chat-note {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .col-side {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card:hover {
+      border-color: rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .card-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── INSTANT STEPS: unique to this page ── */
+    .instant-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .istep {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .istep:last-child { border-bottom: none; padding-bottom: 0; }
+    .istep:first-child { padding-top: 0; }
+
+    .istep-time {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent2);
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 3px 7px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .istep-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .istep-text strong {
+      display: block;
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1px;
+    }
+
+    /* ── BOTTOM ── */
+    .bottom {
+      position: relative; z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      opacity: 0.75;
+      margin-bottom: -4px;
+    }
+
+    /* ── REASONS GRID: unique to this page ── */
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .reason {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 14px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .reason:hover { background: rgba(255,255,255,0.14); }
+
+    .reason-icon { font-size: 24px; margin-bottom: 8px; }
+
+    .reason-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .reason p { font-size: 12px; margin: 0; }
+
+    /* ── FAQ ── */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .faq-q {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .faq-a { font-size: 13px; margin: 0; }
+
+    /* ── SEO ── */
+    .seo-section h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .seo-section h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin: 14px 0 5px;
+    }
+
+    .seo-section a { color: var(--accent2); text-decoration: none; }
+    .seo-section a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: #fff; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 860px) {
+      .top-row { flex-direction: column; }
+      .col-chat { order: 1; }
+      .col-side  { order: 2; }
+      .chat-wrapper { height: 400px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .reasons-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .reasons-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="https://enlinea.chat">Inicio</a>
+  <span>/</span>
+  <a href="https://enlinea.chat/chat-en-linea">Chat en línea</a>
+  <span>/</span>
+  Chatear con personas
+</nav>
+
+<header>
+  <div class="live-badge">
+    <div class="dot"></div>
+    Personas reales conectadas ahora
+  </div>
+  <h1>Chatear con Personas Reales,<br/>Ahora Mismo</h1>
+  <p class="tagline">Sin bots, sin perfiles falsos, sin esperas. Entra, escribe tu apodo y en segundos estás hablando con alguien real.</p>
+</header>
+
+<!-- ── TOP ROW ── -->
+<div class="top-row">
+
+  <!-- CHAT — izquierda -->
+  <div class="col-chat">
+    <div class="chat-label">Conversación en vivo</div>
+    <div class="chat-wrapper">
+      <iframe
+        src="https://xat.com/embed/chat.php#id=40788749&gn=EnLinea"
+        allow="clipboard-write"
+        title="Chatear con personas reales online gratis">
+      </iframe>
+    </div>
+    <p class="chat-note">✅ Personas reales · Sin registro · Gratis</p>
+  </div>
+
+  <!-- SIDEBAR — derecha -->
+  <div class="col-side">
+
+    <div class="card">
+      <p class="card-title"><span>⚡</span> De cero a conversación en menos de 30 segundos</p>
+      <div class="instant-steps">
+        <div class="istep">
+          <div class="istep-time">0 seg</div>
+          <div class="istep-text">
+            <strong>Abres esta página</strong>
+            El chat ya está cargado y activo.
+          </div>
+        </div>
+        <div class="istep">
+          <div class="istep-time">10 seg</div>
+          <div class="istep-text">
+            <strong>Escribes tu apodo</strong>
+            El que quieras. No tiene que ser tu nombre real.
+          </div>
+        </div>
+        <div class="istep">
+          <div class="istep-time">20 seg</div>
+          <div class="istep-text">
+            <strong>Entras a la sala</strong>
+            Hay personas ahí. Las ves en el chat.
+          </div>
+        </div>
+        <div class="istep">
+          <div class="istep-time">30 seg</div>
+          <div class="istep-text">
+            <strong>Escribes tu primer mensaje</strong>
+            Y ya estás chateando con personas reales.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="card-title"><span>✅</span> Lo que NO vas a encontrar aquí</p>
+      <p style="margin-bottom: 8px;">Ni bots que fingen ser personas. Ni perfiles de stock photos. Ni mensajes automáticos de bienvenida. Ni registro obligatorio. Ni cargos ocultos.</p>
+      <p>Solo personas reales escribiendo en tiempo real.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── BOTTOM ── -->
+<div class="bottom">
+
+  <p class="section-label">¿Por qué chatear con personas online?</p>
+  <div class="reasons-grid">
+    <div class="reason">
+      <div class="reason-icon">🕐</div>
+      <div class="reason-title">A cualquier hora</div>
+      <p>No importa si son las 3am. Siempre hay alguien conectado.</p>
+    </div>
+    <div class="reason">
+      <div class="reason-icon">🌍</div>
+      <div class="reason-title">Sin fronteras</div>
+      <p>Habla con personas de España, México, Argentina y más.</p>
+    </div>
+    <div class="reason">
+      <div class="reason-icon">🎭</div>
+      <div class="reason-title">Con privacidad</div>
+      <p>Usa un apodo. No compartas nada que no quieras.</p>
+    </div>
+    <div class="reason">
+      <div class="reason-icon">💬</div>
+      <div class="reason-title">Sin guión</div>
+      <p>Habla de lo que quieras. No hay temas obligatorios.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Preguntas frecuentes</p>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">¿Son personas reales o bots?</div>
+      <p class="faq-a">Personas reales. Cada mensaje lo escribe alguien conectado en ese momento. No hay respuestas automáticas.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Necesito instalar algo?</div>
+      <p class="faq-a">No. Funciona en el navegador, en móvil o en ordenador. Sin apps ni descargas.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Puedo chatear con personas de otros países?</div>
+      <p class="faq-a">Sí. Hay personas de todo el mundo hispanohablante y también de otros países que hablan español.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Es gratis chatear aquí?</div>
+      <p class="faq-a">Sí, completamente gratis. Sin suscripción, sin créditos, sin límite de mensajes.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Sobre este chat</p>
+  <div class="card seo-section">
+    <h2>Chatear con personas: lo que debería ser siempre así de simple</h2>
+    <p>
+      Internet está lleno de plataformas para <strong>chatear con personas</strong> que terminan siendo laberintos de registro, verificación y suscripciones. Este chat hace lo opuesto: carga, entras y hablas. Sin fricción.
+    </p>
+
+    <h3>¿Qué significa chatear con personas reales?</h3>
+    <p>
+      En los últimos años proliferaron los chats con bots, respuestas automáticas e inteligencia artificial haciéndose pasar por humanos. Aquí cada mensaje lo escribe una persona real. Lo que ves en pantalla es una conversación genuina, no una simulación.
+    </p>
+
+    <h3>¿Para qué sirve chatear con personas online?</h3>
+    <p>
+      Las razones son tan variadas como las personas que entran. Algunos quieren desconectar hablando con alguien nuevo. Otros practican un idioma, matan el aburrimiento, buscan perspectivas distintas o simplemente quieren compañía. No hace falta tener un motivo concreto para <strong>chatear con personas</strong>.
+    </p>
+
+    <h3>¿Qué hay más allá de chatear?</h3>
+    <p>
+      Si una conversación te engancha y quieres ir más lejos, también puedes <a href="https://enlinea.chat/chat-para-conocer-gente">conocer gente nueva</a> con más intención o explorar este espacio como un <a href="https://enlinea.chat/chat-para-hacer-amigos">chat para hacer amigos</a>. Todo empieza con el mismo primer mensaje.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:10px;">
+    <a href="/chat-en-linea">Chat en línea</a>
+    <a href="/chatear-con-personas">Chatear con personas</a>
+    <a href="/chat-amigos">Chat de amigos</a>
+    <a href="/chat-para-conocer-gente">Conocer gente</a>
+    <a href="/chat-para-hacer-amigos">Hacer amigos</a>
+  </p>
+  © enlinea.chat — Chat en línea gratis, sin registro, siempre activo
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C39VLW68DT"></script>
+<script src="/assets/analytics.js"></script>
+
+</body>
+</html>

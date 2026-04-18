@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Chat de Amigos | La Sala donde Siempre hay Alguien</title>
+
+  <meta name="description" content="El chat de amigos donde siempre hay ambiente. Entra, saluda y siente que llegas a un lugar conocido. Gratis, sin registro, activo las 24h." />
+  <meta name="keywords" content="chat de amigos, chat amigos, sala de chat amigos, chat para amigos, chat con amigos gratis" />
+
+  <link rel="canonical" href="https://enlinea.chat/chat-amigos" />
+  <meta property="og:title" content="Chat de Amigos | La Sala donde Siempre hay Alguien" />
+  <meta property="og:description" content="El chat de amigos con ambiente real. Entra gratis, sin registro, y encuentra tu lugar." />
+  <meta property="og:url" content="https://enlinea.chat/chat-amigos" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es un chat de amigos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Un chat de amigos es una sala de conversación online donde el ambiente es el de un grupo de personas que se conocen o quieren conocerse. No hay objetivos ni reglas sociales complicadas: solo gente con ganas de charlar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo volver al chat de amigos otro día?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. El chat está siempre disponible. Muchas personas vuelven regularmente y acaban encontrando caras conocidas. No necesitas cuenta para que el chat sea tuyo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay ambiente en el chat de amigos ahora mismo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. El chat está activo las 24 horas. Siempre hay personas conectadas, ya sea de día o de madrugada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Necesito registrarme para entrar al chat de amigos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Entras con un apodo y ya estás dentro. Sin correo, sin contraseña, sin formularios."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --surface: rgba(255,255,255,0.10);
+      --border:  rgba(255,255,255,0.18);
+      --accent:  #93c5fd;
+      --accent2: #bfdbfe;
+      --text:    #ffffff;
+      --muted:   rgba(255,255,255,0.70);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(155deg, #3b82f6 0%, #2563eb 35%, #1d4ed8 65%, #1e3a8a 100%);
+      min-height: 100vh;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 45% at 95% 5%,  rgba(255,255,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 35% at 5%  95%, rgba(255,255,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      position: relative; z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 24px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: #fff; }
+    .breadcrumb span { margin: 0 6px; opacity: 0.35; }
+
+    /* ── HEADER ── */
+    header {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 28px 20px 18px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 8px; height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.7); }
+    }
+
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.15);
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* ── TOP ROW ── */
+    .top-row {
+      position: relative; z-index: 1;
+      display: flex;
+      gap: 22px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 22px;
+      align-items: center;
+    }
+
+    .col-chat { flex: 1.55; min-width: 0; }
+
+    .chat-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 7px;
+    }
+
+    .chat-wrapper {
+      width: 100%;
+      height: 510px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 10px 48px rgba(0,0,0,0.22);
+    }
+
+    iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+
+    .chat-note {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .col-side {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card:hover {
+      border-color: rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .card-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── VIBE ITEMS: unique to this page ── */
+    .vibes {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .vibe {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .vibe:first-child { padding-top: 0; }
+    .vibe:last-child  { border-bottom: none; padding-bottom: 0; }
+
+    .vibe-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      width: 32px;
+      text-align: center;
+    }
+
+    .vibe-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .vibe p { font-size: 12px; margin: 0; }
+
+    /* ── BOTTOM ── */
+    .bottom {
+      position: relative; z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      opacity: 0.75;
+      margin-bottom: -4px;
+    }
+
+    /* ── MOMENTS GRID: unique to this page ── */
+    .moments {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .moment {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: background 0.2s;
+    }
+    .moment:hover { background: rgba(255,255,255,0.14); }
+
+    .moment-time {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent2);
+      opacity: 0.8;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .moment-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .moment p { font-size: 12px; margin: 0; }
+
+    /* ── FAQ ── */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .faq-q {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .faq-a { font-size: 13px; margin: 0; }
+
+    /* ── SEO ── */
+    .seo-section h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .seo-section h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin: 14px 0 5px;
+    }
+
+    .seo-section a { color: var(--accent2); text-decoration: none; }
+    .seo-section a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: #fff; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 860px) {
+      .top-row { flex-direction: column; }
+      .col-chat { order: 1; }
+      .col-side  { order: 2; }
+      .chat-wrapper { height: 400px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .moments { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .moments { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="https://enlinea.chat">Inicio</a>
+  <span>/</span>
+  <a href="https://enlinea.chat/chat-en-linea">Chat en línea</a>
+  <span>/</span>
+  Chat de amigos
+</nav>
+
+<header>
+  <div class="live-badge">
+    <div class="dot"></div>
+    La sala está abierta ahora
+  </div>
+  <h1>El Chat de Amigos<br/>donde Siempre hay Alguien</h1>
+  <p class="tagline">No es solo un chat. Es una sala con ambiente, con gente que vuelve y con conversaciones que empiezan solas. Entra gratis, sin registro.</p>
+</header>
+
+<!-- ── TOP ROW ── -->
+<div class="top-row">
+
+  <!-- CHAT — izquierda -->
+  <div class="col-chat">
+    <div class="chat-label">La sala — en directo</div>
+    <div class="chat-wrapper">
+      <iframe
+        src="https://xat.com/embed/chat.php#id=40788749&gn=EnLinea"
+        allow="clipboard-write"
+        title="Chat de amigos online gratis sin registro">
+      </iframe>
+    </div>
+    <p class="chat-note">🟢 La sala está activa · Sin registro · Gratis</p>
+  </div>
+
+  <!-- SIDEBAR — derecha -->
+  <div class="col-side">
+
+    <div class="card">
+      <p class="card-title"><span>🏠</span> ¿Qué tiene este chat de amigos?</p>
+      <div class="vibes">
+        <div class="vibe">
+          <div class="vibe-icon">🌡️</div>
+          <div>
+            <div class="vibe-title">Ambiente real</div>
+            <p>Conversaciones que ya están pasando cuando llegas. No entras a un sitio vacío.</p>
+          </div>
+        </div>
+        <div class="vibe">
+          <div class="vibe-icon">🔄</div>
+          <div>
+            <div class="vibe-title">Gente que vuelve</div>
+            <p>Con el tiempo, empiezas a reconocer apodos. La sala se vuelve familiar.</p>
+          </div>
+        </div>
+        <div class="vibe">
+          <div class="vibe-icon">🚪</div>
+          <div>
+            <div class="vibe-title">Siempre abierta</div>
+            <p>No hay horarios, no hay eventos, no hay nada que organizar. La sala siempre está.</p>
+          </div>
+        </div>
+        <div class="vibe">
+          <div class="vibe-icon">😌</div>
+          <div>
+            <div class="vibe-title">Sin presión social</div>
+            <p>No hay likes, no hay seguidores, no hay reputación que mantener. Solo la charla.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── BOTTOM ── -->
+<div class="bottom">
+
+  <p class="section-label">El chat de amigos para cada momento</p>
+  <div class="moments">
+    <div class="moment">
+      <div class="moment-time">Mañana</div>
+      <div class="moment-title">El café de las 9am</div>
+      <p>Empezar el día con una conversación relajada antes de que todo se ponga en marcha.</p>
+    </div>
+    <div class="moment">
+      <div class="moment-time">Tarde</div>
+      <div class="moment-title">El descanso de media tarde</div>
+      <p>Cuando necesitas desconectar cinco minutos y tener un intercambio humano de verdad.</p>
+    </div>
+    <div class="moment">
+      <div class="moment-time">Noche</div>
+      <div class="moment-title">La hora más activa</div>
+      <p>De noche el chat se llena. Las conversaciones se alargan y el ambiente se calienta.</p>
+    </div>
+    <div class="moment">
+      <div class="moment-time">Madrugada</div>
+      <div class="moment-title">Para los que no duermen</div>
+      <p>Siempre hay alguien conectado. A las 3am también hay conversación.</p>
+    </div>
+    <div class="moment">
+      <div class="moment-time">Finde</div>
+      <div class="moment-title">Cuando el tiempo sobra</div>
+      <p>Los fines de semana el ritmo cambia. Las charlas son más largas, más tranquilas.</p>
+    </div>
+    <div class="moment">
+      <div class="moment-time">Siempre</div>
+      <div class="moment-title">Cuando lo necesites</div>
+      <p>No hace falta un motivo concreto. Entrar al chat de amigos es suficiente razón.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Preguntas frecuentes</p>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">¿Qué es exactamente un chat de amigos?</div>
+      <p class="faq-a">Una sala de conversación online con ambiente de grupo. No hay un objetivo concreto: solo gente con ganas de charlar y conectar.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Puedo volver otro día y encontrar gente?</div>
+      <p class="faq-a">Sí. El chat está activo las 24h y muchas personas vuelven regularmente. Con el tiempo empiezas a reconocer a algunos.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Hay que registrarse?</div>
+      <p class="faq-a">No. Entras con un apodo y ya estás dentro. Sin correo, sin contraseña, sin ningún dato personal.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Es gratis el chat de amigos?</div>
+      <p class="faq-a">Completamente gratis. Sin suscripción, sin límites de mensajes, sin funciones de pago.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Sobre este chat</p>
+  <div class="card seo-section">
+    <h2>Un chat de amigos de verdad: ambiente, no solo mensajes</h2>
+    <p>
+      La diferencia entre un <strong>chat de amigos</strong> y cualquier otra plataforma de mensajería es el ambiente. No es solo el intercambio de mensajes: es la sensación de llegar a un sitio donde hay vida, donde las conversaciones ya están pasando y tú puedes unirte cuando quieras.
+    </p>
+
+    <h3>¿Por qué los chats de amigos siguen funcionando?</h3>
+    <p>
+      Las redes sociales han complicado algo que antes era simple. Un <strong>chat de amigos</strong> recupera esa simplicidad: una sala, un apodo, personas reales. Sin algoritmos que decidan qué ves, sin perfiles que gestionar, sin métricas de popularidad. Solo la conversación en su estado más puro.
+    </p>
+
+    <h3>El chat de amigos como espacio propio</h3>
+    <p>
+      Con el tiempo, un <strong>chat de amigos online</strong> se convierte en algo tuyo. Reconoces apodos, hay temas recurrentes, hay un tono que le pertenece a esa sala. No es lo mismo que hablar con desconocidos: es más parecido a un bar de toda la vida donde siempre hay alguien conocido.
+    </p>
+
+    <h3>Más allá del chat de amigos</h3>
+    <p>
+      Si llegas aquí buscando algo más específico, también puedes explorar nuestro espacio para <a href="https://enlinea.chat/chat-para-hacer-amigos">hacer amigos nuevos</a>, <a href="https://enlinea.chat/chat-para-conocer-gente">conocer gente</a> o simplemente <a href="https://enlinea.chat/chatear-con-personas">chatear con personas reales</a> sin más objetivo.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:10px;">
+    <a href="/chat-en-linea">Chat en línea</a>
+    <a href="/chatear-con-personas">Chatear con personas</a>
+    <a href="/chat-amigos">Chat de amigos</a>
+    <a href="/chat-para-conocer-gente">Conocer gente</a>
+    <a href="/chat-para-hacer-amigos">Hacer amigos</a>
+  </p>
+  © enlinea.chat — Chat en línea gratis, sin registro, siempre activo
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C39VLW68DT"></script>
+<script src="/assets/analytics.js"></script>
+
+</body>
+</html>

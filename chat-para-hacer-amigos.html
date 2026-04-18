@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Chat para Hacer Amigos | Encuentra tu Tribu Online Gratis</title>
+
+  <meta name="description" content="El chat para hacer amigos de verdad, sin perfiles falsos ni algoritmos. Entra gratis, conversa y construye amistades reales desde el primer mensaje." />
+  <meta name="keywords" content="chat para hacer amigos, hacer amigos online, chat amigos gratis, buscar amigos por chat, amigos nuevos online" />
+
+  <link rel="canonical" href="https://enlinea.chat/chat-para-hacer-amigos" />
+  <meta property="og:title" content="Chat para Hacer Amigos | Encuentra tu Tribu Online Gratis" />
+  <meta property="og:description" content="Entra gratis y empieza a hacer amigos de verdad. Sin registro, sin esperas." />
+  <meta property="og:url" content="https://enlinea.chat/chat-para-hacer-amigos" />
+  <meta property="og:type" content="website" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Se pueden hacer amigos de verdad en un chat online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Muchas amistades duraderas empiezan con una conversación en un chat. La clave está en ser auténtico desde el principio y no tener prisa. La conexión llega cuando menos lo esperas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo empiezo a hacer amigos en este chat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Entra con un apodo, preséntate o únete a una conversación activa. No necesitas registro ni perfil. Una pregunta o un comentario honesto es suficiente para romper el hielo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué tipo de personas hay en el chat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Personas de distintas edades y países que también buscan conversación y amistad. Hay gente que quiere hablar de sus aficiones, practicar idiomas, compartir experiencias o simplemente tener alguien con quien charlar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es gratis hacer amigos aquí?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Completamente gratis. No hay suscripción, no hay créditos, no hay límite de mensajes. Solo entras y empiezas a hablar."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --surface: rgba(255,255,255,0.10);
+      --border:  rgba(255,255,255,0.18);
+      --accent:  #93c5fd;
+      --accent2: #bfdbfe;
+      --text:    #ffffff;
+      --muted:   rgba(255,255,255,0.70);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(155deg, #3b82f6 0%, #2563eb 35%, #1d4ed8 65%, #1e3a8a 100%);
+      min-height: 100vh;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 45% at 95% 5%,  rgba(255,255,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 35% at 5%  95%, rgba(255,255,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      position: relative; z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 24px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: #fff; }
+    .breadcrumb span { margin: 0 6px; opacity: 0.35; }
+
+    /* ── HEADER ── */
+    header {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 28px 20px 18px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 8px; height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.7); }
+    }
+
+    h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.15);
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.55;
+    }
+
+    /* ── TOP ROW ── */
+    .top-row {
+      position: relative; z-index: 1;
+      display: flex;
+      gap: 22px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 22px;
+      align-items: center;
+    }
+
+    .col-chat { flex: 1.55; min-width: 0; }
+
+    .chat-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 7px;
+    }
+
+    .chat-wrapper {
+      width: 100%;
+      height: 510px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 10px 48px rgba(0,0,0,0.22);
+    }
+
+    iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+
+    .chat-note {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .col-side {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card:hover {
+      border-color: rgba(255,255,255,0.32);
+      background: rgba(255,255,255,0.14);
+    }
+
+    .card-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── FRIEND TYPES: unique to this page ── */
+    .friend-types {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ftype {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 10px;
+      padding: 10px 12px;
+      transition: background 0.2s;
+    }
+    .ftype:hover { background: rgba(255,255,255,0.12); }
+
+    .ftype-icon { font-size: 20px; flex-shrink: 0; }
+
+    .ftype-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1px;
+    }
+
+    .ftype p { font-size: 12px; margin: 0; }
+
+    /* ── BOTTOM ── */
+    .bottom {
+      position: relative; z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .section-label {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      opacity: 0.75;
+      margin-bottom: -4px;
+    }
+
+    /* ── TIPS: unique to this page ── */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .tip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .tip-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.18);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .tip-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .tip p { font-size: 12px; margin: 0; }
+
+    /* ── FAQ grid ── */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .faq-q {
+      font-family: 'Sora', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .faq-a { font-size: 13px; margin: 0; }
+
+    /* ── SEO ── */
+    .seo-section h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .seo-section h3 {
+      font-family: 'Sora', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent2);
+      margin: 14px 0 5px;
+    }
+
+    .seo-section a { color: var(--accent2); text-decoration: none; }
+    .seo-section a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    footer a { color: rgba(255,255,255,0.55); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: #fff; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 860px) {
+      .top-row { flex-direction: column; }
+      .col-chat { order: 1; }
+      .col-side  { order: 2; }
+      .chat-wrapper { height: 400px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .tips-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .tips-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="breadcrumb" aria-label="breadcrumb">
+  <a href="https://enlinea.chat">Inicio</a>
+  <span>/</span>
+  <a href="https://enlinea.chat/chat-en-linea">Chat en línea</a>
+  <span>/</span>
+  Chat para hacer amigos
+</nav>
+
+<header>
+  <div class="live-badge">
+    <div class="dot"></div>
+    Personas buscando amistad ahora
+  </div>
+  <h1>Chat para Hacer Amigos de Verdad</h1>
+  <p class="tagline">Donde las conversaciones se convierten en amistades. Entra gratis, sin registro, y empieza desde el primer mensaje.</p>
+</header>
+
+<!-- ── TOP ROW ── -->
+<div class="top-row">
+
+  <!-- CHAT — izquierda -->
+  <div class="col-chat">
+    <div class="chat-label">Sala de amigos — en directo</div>
+    <div class="chat-wrapper">
+      <iframe
+        src="https://xat.com/embed/chat.php#id=40788749&gn=EnLinea"
+        allow="clipboard-write"
+        title="Chat para hacer amigos online gratis">
+      </iframe>
+    </div>
+    <p class="chat-note">💙 Sin registro · Gratis · Activo las 24h</p>
+  </div>
+
+  <!-- SIDEBAR — derecha -->
+  <div class="col-side">
+
+    <div class="card">
+      <p class="card-title"><span>💙</span> Aquí se hacen amigos, no solo contactos</p>
+      <p>
+        La diferencia entre un contacto y un amigo es la conversación real. Este chat no tiene perfiles curados ni fotos de perfil perfectas. Solo personas con ganas de hablar, escuchar y conectar de verdad. Sin presión, sin algoritmos, sin filtros.
+      </p>
+    </div>
+
+    <div class="card">
+      <p class="card-title"><span>👥</span> ¿Qué tipo de amigos puedes hacer aquí?</p>
+      <div class="friend-types">
+        <div class="ftype">
+          <div class="ftype-icon">🎮</div>
+          <div class="ftype-body">
+            <div class="ftype-title">Compañeros de aficiones</div>
+            <p>Gente con quien compartir lo que te apasiona.</p>
+          </div>
+        </div>
+        <div class="ftype">
+          <div class="ftype-icon">🌐</div>
+          <div class="ftype-body">
+            <div class="ftype-title">Amigos internacionales</div>
+            <p>Personas de otros países con quienes ampliar horizontes.</p>
+          </div>
+        </div>
+        <div class="ftype">
+          <div class="ftype-icon">🗣️</div>
+          <div class="ftype-body">
+            <div class="ftype-title">Alguien con quien hablar</div>
+            <p>Para los días en que solo necesitas que alguien te escuche.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── BOTTOM ── -->
+<div class="bottom">
+
+  <p class="section-label">Consejos para hacer amigos en el chat</p>
+  <div class="tips-grid">
+    <div class="tip">
+      <div class="tip-num">01</div>
+      <div class="tip-title">Sé tú mismo desde el principio</div>
+      <p>Las amistades reales empiezan con autenticidad, no con una versión ideal de ti. Habla como hablas normalmente.</p>
+    </div>
+    <div class="tip">
+      <div class="tip-num">02</div>
+      <div class="tip-title">Pregunta, no solo respondas</div>
+      <p>El interés genuino por la otra persona es lo que transforma una conversación en el inicio de una amistad.</p>
+    </div>
+    <div class="tip">
+      <div class="tip-num">03</div>
+      <div class="tip-title">Dale tiempo a la conversación</div>
+      <p>Las amistades no se construyen en un solo mensaje. Vuelve, recuerda lo que te contaron, continúa.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Preguntas frecuentes</p>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">¿Se pueden hacer amigos de verdad online?</div>
+      <p class="faq-a">Sí, y más de lo que crees. Muchas amistades duraderas empezaron con una conversación en un chat. La autenticidad no depende del canal.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Cómo rompo el hielo al entrar?</div>
+      <p class="faq-a">Un simple "hola, ¿de qué están hablando?" funciona mejor que cualquier frase elaborada. La naturalidad abre más puertas que el ingenio forzado.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Hay gente de todas las edades?</div>
+      <p class="faq-a">Sí. Hay personas jóvenes, adultos y de todas partes del mundo hispanohablante. El chat no tiene restricciones de edad para adultos.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Es 100% gratis hacer amigos aquí?</div>
+      <p class="faq-a">Completamente. Sin suscripción, sin créditos, sin límite de mensajes. Solo entras y empiezas a hablar.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Sobre este chat</p>
+  <div class="card seo-section">
+    <h2>El chat para hacer amigos que no te pide nada a cambio</h2>
+    <p>
+      La mayoría de plataformas para <strong>hacer amigos online</strong> terminan pidiendo suscripción, verificación de identidad o te encierran detrás de muros de pago. Este chat funciona al revés: entras, te presentas y empiezas. Así de directo.
+    </p>
+
+    <h3>¿Por qué es difícil hacer amigos siendo adulto?</h3>
+    <p>
+      A medida que crecemos, los espacios naturales para hacer amigos desaparecen. El trabajo no siempre da para relaciones de amistad profunda, y la vida cotidiana deja poco margen. Un <strong>chat para hacer amigos</strong> devuelve ese espacio: un lugar donde la única agenda es conversar.
+    </p>
+
+    <h3>La diferencia entre hacer amigos y conocer gente</h3>
+    <p>
+      <a href="https://enlinea.chat/chat-para-conocer-gente">Conocer gente</a> es el primer paso. <strong>Hacer amigos</strong> es lo que ocurre cuando vuelves, cuando recuerdas lo que alguien te contó, cuando la conversación tiene historia. Este chat es el lugar donde ese proceso puede empezar.
+    </p>
+
+    <h3>¿Qué hace que una amistad online sea real?</h3>
+    <p>
+      Las mismas cosas que en cualquier amistad: reciprocidad, interés genuino y continuidad. No importa si os conocisteis en un <strong>chat online</strong> o en un café. Lo que importa es lo que construís juntos a partir de ese primer "hola".
+    </p>
+
+    <h3>Más opciones en enlinea.chat</h3>
+    <p>
+      Si buscas simplemente <a href="https://enlinea.chat/chat-en-linea">chatear en línea</a> sin más objetivo, también tenemos esa opción. Y si tu meta principal es <a href="https://enlinea.chat/chat-para-conocer-gente">conocer gente nueva</a>, hay una página pensada justo para eso.
+    </p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:10px;">
+    <a href="/chat-en-linea">Chat en línea</a>
+    <a href="/chatear-con-personas">Chatear con personas</a>
+    <a href="/chat-amigos">Chat de amigos</a>
+    <a href="/chat-para-conocer-gente">Conocer gente</a>
+    <a href="/chat-para-hacer-amigos">Hacer amigos</a>
+  </p>
+  © enlinea.chat — Chat en línea gratis, sin registro, siempre activo
+</footer>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C39VLW68DT"></script>
+<script src="/assets/analytics.js"></script>
+
+</body>
+</html>
